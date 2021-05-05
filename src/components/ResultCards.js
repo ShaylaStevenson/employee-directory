@@ -21,9 +21,9 @@ function ResultCards(props) {
             {/* each result will generate a card within the card-deck */}
             {props.results.map(result => (
                 <div key={result.id} className="card">
-                    <img className="card-img-top img-thumbnail" src={result.picture.thumbnail} alt={result.firstName}/>
+                    <img className="card-img-top" style={{width: "75px"}} src={result.picture.thumbnail} alt={result.firstName}/>
                     <div className="card-body">
-                        <h5 className="card-title">{result.name.first}{result.name.last}</h5>
+                        <h5 className="card-title text-danger">{result.name.first}{result.name.last}</h5>
                         <p className="card-text">{result.email}</p>
                         <p className="card-text">{result.phone}</p>
                         <p className="card-text"><small className="text-muted">{result.registered.date}</small></p>
