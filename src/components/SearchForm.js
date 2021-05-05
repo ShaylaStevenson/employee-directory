@@ -45,3 +45,11 @@ function SearchForm(props) {
 }
 
 export default SearchForm;
+
+<div class="form-group">
+    <label htmlFor="Sort">Sort</label>
+    <select class="form-control" id="sortFeature">
+      <option value="ascending">Alphabetically - ascending</option>
+      <option value="decending">Alphabetically - decending</option>
+    </select>
+  </div>
