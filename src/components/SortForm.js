@@ -2,15 +2,15 @@ import React from "react";
 
 function SortForm(props) {
   return (
-    <form className="bg-dark text-light" onSubmit={props.handleSubmit}>
+    <form className="bg-dark text-light" onSubmit={props.sortResults}>
         <div className="form-group m-3 p-3 bg-secondary">
             <label>
                 Sort <br></br>
                 <select
-                    onChange={props.handleChange}
+                    onChange={props.handleSortChange}
                     value={props.sort} 
                     name="sort"
-                    classname="form-control"
+                    className="form-control"
                     id="sort"
                 > 
                     <option></option>

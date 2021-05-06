@@ -11,26 +11,43 @@ class SearchResultContainer extends Component {
     results: []
   };
 
-  // When this component mounts, get random users
+  // when this component mounts, get random users
   componentDidMount() {
     API.search()
       .then(res => this.setState({ results: res.data.results }))
       .catch(err => console.log(err));
   }
 
-  // original activity 19
-  //  componentDidMount() {
-  //    this.searchRU("");
-  //  }
+// search elements
+  // to search for an employee by first name 
+  // ref activity 17
+  // get the value and name of the input which triggered the change
+  handleSearchChange = event => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
+  };
 
-   searchRU = query => {
-       const searchEmployee = this.state.results.filter(employee => employee.name.first || employee.name.last === query);
-       this.setState({ results: searchEmployee})
-   };
-   //const notPurchased = props.groceries.filter(grocery => !grocery.purchased);
+  // when the form is submitted, call the search employee function passing in `this.state.search`
+  handleSearchSubmit = event => {
+    event.preventDefault();
+    this.searchEmployees(this.state.search);
+    this.setState({
+      // this should clear the input field, but doesn't seem to be working
+      search: ""
+    });
+  };
 
-// To use search 
-  handleChange = event => {
+  // function to filter through results array to find first names that match the query 
+  // ref activity 13
+  searchEmployees = query => {
+    const foundEmployees = this.state.results.filter(employee => employee.name.first === query);
+    this.setState({ results: foundEmployees})
+  };
+
+// sort elements
+  handleSortChange = event => {
     const name = event.target.name;
     const value = event.target.value;
     this.setState({
@@ -38,11 +55,34 @@ class SearchResultContainer extends Component {
     });
   };
 
-  // When the form is submitted, search the Giphy API for `this.state.search`
-  handleSubmit = event => {
+  handleSortSubmit = event => {
     event.preventDefault();
-    this.searchRU(this.state.search);
+    this.sortRU(this.state.sort)
   };
+
+  sortRU = query => {
+    const sortedEmployees = [];
+    this.setState({ results: sortedEmployees})
+  };
+  // sortResults = () => {
+  //   const employees = this.state.results.sort((a, b) => {
+  //     if (b.name.last > a.name.last) {
+  //       return -1
+  //     }
+  //     if (a.name.last > b.name.last) {
+  //       return 1
+  //     }
+  //     return 0;
+  //   });
+
+  //   if (this.state.sort === "decending") {
+  //     employees.reverse();
+  //     this.setState({ sort: "ASC" });
+  //   } else {
+  //     this.setState({ sortOrder: "DESC" });
+  //   }
+  //   this.setState({ results: employees })
+  // }
 
   render() {
     return (
@@ -54,13 +94,13 @@ class SearchResultContainer extends Component {
             </div>
             <SearchForm
               value={this.state.value}
-              handleSubmit={this.handleSubmit}
-              handleChange={this.handleChange}
+              handleSearchSubmit={this.handleSearchSubmit}
+              handleSearchChange={this.handleSearchChange}
             />
             <SortForm
               value={this.state.value}
-              handleSubmit={this.handleSubmit}
-              handleChange={this.handleChange}
+              handleSortSubmit={this.handleSortSubmit}
+              handleSortChange={this.handleSortChange}
             />
           </div>
           <div className="col-md-8">
