@@ -2,7 +2,7 @@ import React from "react";
 
 function SortForm(props) {
   return (
-    <form className="bg-dark text-light" onSubmit={props.sortResults}>
+    <form className="bg-dark text-light" onSubmit={props.handleSortSubmit}>
         <div className="form-group m-3 p-3 bg-secondary">
             <label>
                 Sort <br></br>
@@ -14,8 +14,8 @@ function SortForm(props) {
                     id="sort"
                 > 
                     <option></option>
-                    <option value="ascending">last name - ascending</option>
-                    <option value="decending">last name - decending</option>
+                    <option value="ascending">name - ascending</option>
+                    <option value="decending">name - decending</option>
                 </select>
             </label> <br></br>
             <input className="btn btn-primary mt-3" type="submit" value="Sort" />

@@ -18,16 +18,15 @@ class SearchResultContainer extends Component {
       .catch(err => console.log(err));
   }
 
-// search elements
+//////////// search elements////////////////
   // to search for an employee by first name 
-  // ref activity 17
+
   // get the value and name of the input which triggered the change
+  // ref activity 17
   handleSearchChange = event => {
     const { name, value } = event.target;
-    this.setState({
-      [name]: value
-    });
-  };
+    this.setState({ [name]: value });
+  }; 
 
   // when the form is submitted, call the search employee function passing in `this.state.search`
   handleSearchSubmit = event => {
@@ -42,48 +41,54 @@ class SearchResultContainer extends Component {
   // function to filter through results array to find first names that match the query 
   // ref activity 13
   searchEmployees = query => {
-    const foundEmployees = this.state.results.filter(employee => employee.name.first === query);
+    // save results to a new array before manipulating
+    const newResults = [...this.state.results];
+    // use react filter to search for matching first names
+    const foundEmployees = newResults.filter(employee => employee.name.first === query);
+    // update results
     this.setState({ results: foundEmployees})
   };
 
-// sort elements
+/////////////// sort elements //////////////
+  // to sort employees by ascending or decending order
+
+  // get the value and name of the input which triggered the change
   handleSortChange = event => {
-    const name = event.target.name;
-    const value = event.target.value;
-    this.setState({
-      [name]: value
-    });
+    const { name, value } = event.target;
+    this.setState({ [name]: value });
+    console.log("sort value set...")
   };
 
+  // when the form is submitted, call the sort employee function passing in `this.state.sort`
   handleSortSubmit = event => {
     event.preventDefault();
-    this.sortRU(this.state.sort)
+    this.sortEmployees(this.state.sort)
   };
 
-  sortRU = query => {
-    const sortedEmployees = [];
-    this.setState({ results: sortedEmployees})
+  sortEmployees = query => {
+    console.log("sorting employees in " + this.state.sort + " order")
+
+    // save results to a new array before manipulating
+    const newResults = [...this.state.results];
+
+    // compare first names and sort into ascending order
+    // ref https://stackoverflow.com/questions/6712034/sort-array-by-firstname-alphabetically-in-javascript
+    newResults.sort(function(a, b){
+      if(a.name.first < b.name.first) { return -1; }
+      if(a.name.first > b.name.first) { return 1; }
+      return 0;
+    });
+
+    // logic to determine if order should be in decending order
+    if (query === "decending") {
+      newResults.reverse();
+    } 
+
+    // update results
+    this.setState({ results: newResults })
   };
-  // sortResults = () => {
-  //   const employees = this.state.results.sort((a, b) => {
-  //     if (b.name.last > a.name.last) {
-  //       return -1
-  //     }
-  //     if (a.name.last > b.name.last) {
-  //       return 1
-  //     }
-  //     return 0;
-  //   });
 
-  //   if (this.state.sort === "decending") {
-  //     employees.reverse();
-  //     this.setState({ sort: "ASC" });
-  //   } else {
-  //     this.setState({ sortOrder: "DESC" });
-  //   }
-  //   this.setState({ results: employees })
-  // }
-
+  // render the components to app
   render() {
     return (
       <div className="container">
