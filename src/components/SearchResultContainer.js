@@ -29,7 +29,9 @@ class SearchResultContainer extends Component {
   // get the value and name of the input which triggered the change
   // ref activity 17
   handleSearchChange = event => {
-    const { name, value } = event.target;
+    const name = event.target.name;
+    //convert search value string to lowercase
+    const value = event.target.value.toLowerCase();
     this.setState({ [name]: value });
   }; 
 
@@ -48,8 +50,8 @@ class SearchResultContainer extends Component {
   searchEmployees = query => {
     // save results to a new array before manipulating
     const newResults = [...this.state.results];
-    // use react filter to search for matching first names
-    const foundEmployees = newResults.filter(employee => employee.name.first === query);
+    // use react filter to search for matching first names as they are changed to lowercase
+    const foundEmployees = newResults.filter(employee => employee.name.first.toLowerCase() === query);
     // update results
     this.setState({ results: foundEmployees})
   };
