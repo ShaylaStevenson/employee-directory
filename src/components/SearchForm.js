@@ -5,7 +5,7 @@ import React from "react";
 function SearchForm(props) {
   return (
     <form className="bg-dark text-light">
-      <div className="form-group m-3 p-3 bg-secondary">
+      <div className="form-group m-3 p-3">
         <label htmlFor="search">Search by first name</label>
         <input
           onChange={props.handleSearchChange}

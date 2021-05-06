@@ -6,7 +6,7 @@ import React from "react";
 function SortForm(props) {
   return (
     <form className="bg-dark text-light">
-        <div className="form-group m-3 p-3 bg-secondary">
+        <div className="form-group m-3 p-3">
             <label htmlFor="sort">Sort by name</label>
                 <select
                     onChange={props.handleSortChange}
@@ -17,7 +17,7 @@ function SortForm(props) {
                     id="sort"
                     style={{width: "100%"}}
                 > 
-                    <option value="" disabled selected>Select your option</option>
+                    <option value="">Select your option</option>
                     <option value="ascending">ascending</option>
                     <option value="decending">decending</option>
                 </select>

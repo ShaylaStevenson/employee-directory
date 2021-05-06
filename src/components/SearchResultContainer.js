@@ -111,11 +111,11 @@ class SearchResultContainer extends Component {
   // render the components to app
   render() {
     return (
-      <div className="container">
+      <div className="container back-fade mt-3">
         <div className="row">
           <div className="col-md-4">
             <div>
-              <h1 className="display-3">Employee Directory</h1>
+              <h1 className="display-3 text-dark pt-2 pl-2">Employee Directory</h1>
             </div>
             <SearchForm
               value={this.state.value}

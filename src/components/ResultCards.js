@@ -1,4 +1,5 @@
 import React from "react";
+
 //use the npm package to format the hire date
 import dateFormat from 'dateformat'
 
@@ -8,16 +9,17 @@ function ResultCards(props) {
             {/* each result will display a card */}
             {props.results.map(result => (
             <div className="row my-1">
-                <div key={result.id} className="card w-100 text-light bg-secondary">
+                <div key={result.id} className="card w-100 text-dark">
                     <div className="card-body">
                         <h5 className="card-title bg-dark text-light p-3">{result.name.first} {result.name.last}</h5>
                         <div className="row">
                             <div className="col-md-4">
-                                <img className="card-img-top" style={{width: "100px"}} src={result.picture.thumbnail} alt={result.firstName}/>
+                                <img className="card-img-top" src={result.picture.medium} alt={result.firstName}/>
                             </div>
                             <div className="col-md-5">
-                                <p className="card-text">{result.email}</p>
-                                <p className="card-text">{result.phone}</p>
+                                <p className="card-text mt-1">{result.email}</p>
+                                <p className="card-text mt-3">{result.phone}</p>
+                                <p className="card-text mt-3">{result.location.city}, {result.location.state}</p>
                             </div>
                             <div className="col-md-3">
                                 <p className="card-text mb-0">Hire Date</p>

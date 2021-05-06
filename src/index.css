@@ -1,0 +1,30 @@
+body {
+    background-color: black;
+    font-family: 'Roboto Condensed', sans-serif;
+    background-image: url("components/office-image.jfif");
+}
+
+.back-fade {
+    background-image:linear-gradient(rgba(255,255,255, 0.9),rgba(255,255,255, 0.0), rgba(255,255,255, 0.0))
+}
+
+.card {
+    background-color:linen;
+    border-style: groove;
+    border-color: black;
+    border-width: 1px;
+    outline-style: groove;
+    outline-color: rgb(129, 155, 185);
+    outline-width: 4px;
+    font-size: larger;
+    font-weight: bolder;
+}
+
+/* #image-div {
+    Display: flex;
+    Height: 100px;
+    Width: 100px; 
+    Align-Items: center;
+    Justify-Content: center;
+} */
+
