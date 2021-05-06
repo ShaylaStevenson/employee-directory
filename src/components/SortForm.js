@@ -1,24 +1,31 @@
 import React from "react";
 
+// sort form to be deployed 
+// ref https://reactjs.org/docs/forms.html
+// refactored to be consistant with search form 
 function SortForm(props) {
   return (
-    <form className="bg-dark text-light" onSubmit={props.handleSortSubmit}>
+    <form className="bg-dark text-light">
         <div className="form-group m-3 p-3 bg-secondary">
-            <label>
-                Sort <br></br>
+            <label htmlFor="sort">Sort by name</label>
                 <select
                     onChange={props.handleSortChange}
                     value={props.sort} 
                     name="sort"
                     className="form-control"
                     id="sort"
+                    style={{width: "100%"}}
                 > 
                     <option></option>
-                    <option value="ascending">name - ascending</option>
-                    <option value="decending">name - decending</option>
+                    <option value="ascending">ascending</option>
+                    <option value="decending">decending</option>
                 </select>
-            </label> <br></br>
-            <input className="btn btn-primary mt-3" type="submit" value="Sort" />
+            <button onClick={props.handleSortSubmit} type="submit" className="btn btn-primary mt-3">
+              Sort
+            </button>
+            <button onClick={props.handleResetSubmit} type="submit" className="btn btn-warning ml-2 mt-3">
+              Reset
+            </button>
       </div>
     </form>  
   );
