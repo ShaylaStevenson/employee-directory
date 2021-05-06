@@ -10,7 +10,8 @@ function SortForm(props) {
             <label htmlFor="sort">Sort by name</label>
                 <select
                     onChange={props.handleSortChange}
-                    value={props.sort} 
+                    value={props.sort}
+                    // {this.state.sort}
                     name="sort"
                     className="form-control"
                     id="sort"

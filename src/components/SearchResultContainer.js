@@ -8,13 +8,17 @@ class SearchResultContainer extends Component {
   state = {
     search: "",
     sort: "",
-    results: []
+    results: [],
+    orgResults: []
   };
 
   // when this component mounts, get random users
   componentDidMount() {
     API.search()
-      .then(res => this.setState({ results: res.data.results }))
+      .then(res => this.setState({ 
+        results: res.data.results,
+        orgResults: res.data.results   
+      }))
       .catch(err => console.log(err));
   }
 
@@ -83,10 +87,25 @@ class SearchResultContainer extends Component {
     if (query === "decending") {
       newResults.reverse();
     } 
-
     // update results
     this.setState({ results: newResults })
   };
+
+  ///////////// reset element ////////////
+    // to return results to original array
+    handleResetSubmit = event => {
+      event.preventDefault();
+      this.setState({
+        results: this.state.orgResults,
+        search: "",
+        sort: ""
+      })
+      // attempts to clear input field on reset, but not working
+      //this.state.search.value = "";
+      //this.sort.value= "";
+      
+
+    }
 
   // render the components to app
   render() {
@@ -101,11 +120,13 @@ class SearchResultContainer extends Component {
               value={this.state.value}
               handleSearchSubmit={this.handleSearchSubmit}
               handleSearchChange={this.handleSearchChange}
+              handleResetSubmit={this.handleResetSubmit}
             />
             <SortForm
               value={this.state.value}
               handleSortSubmit={this.handleSortSubmit}
               handleSortChange={this.handleSortChange}
+              handleResetSubmit={this.handleResetSubmit}
             />
           </div>
           <div className="col-md-8">

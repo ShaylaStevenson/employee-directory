@@ -10,6 +10,7 @@ function SearchForm(props) {
         <input
           onChange={props.handleSearchChange}
           value={props.search}
+          //{this.state.search}
           name="search"
           type="text"
           className="form-control"
