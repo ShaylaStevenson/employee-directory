@@ -17,7 +17,7 @@ function SortForm(props) {
                     id="sort"
                     style={{width: "100%"}}
                 > 
-                    <option></option>
+                    <option value="" disabled selected>Select your option</option>
                     <option value="ascending">ascending</option>
                     <option value="decending">decending</option>
                 </select>

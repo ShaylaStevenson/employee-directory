@@ -17,6 +17,7 @@ class SearchResultContainer extends Component {
     API.search()
       .then(res => this.setState({ 
         results: res.data.results,
+        // saves the original result array for reset element
         orgResults: res.data.results   
       }))
       .catch(err => console.log(err));

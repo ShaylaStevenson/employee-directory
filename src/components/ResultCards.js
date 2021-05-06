@@ -1,4 +1,6 @@
 import React from "react";
+//use the npm package to format the hire date
+import dateFormat from 'dateformat'
 
 function ResultCards(props) {
     return (
@@ -13,13 +15,14 @@ function ResultCards(props) {
                             <div className="col-md-4">
                                 <img className="card-img-top" style={{width: "100px"}} src={result.picture.thumbnail} alt={result.firstName}/>
                             </div>
-                            <div className="col-md-4">
+                            <div className="col-md-5">
                                 <p className="card-text">{result.email}</p>
                                 <p className="card-text">{result.phone}</p>
                             </div>
-                            <div className="col-md-4">
-                                <p className="card-text">Hire Date</p>
-                                <p className="card-text">{result.registered.date}</p>
+                            <div className="col-md-3">
+                                <p className="card-text mb-0">Hire Date</p>
+                                {/* use dateFormat to apply mask to returned date */}
+                                <p className="card-text">{dateFormat(result.registered.date, "mm / dd / yyyy")}</p>
                             </div>
                         </div>
                     </div>
