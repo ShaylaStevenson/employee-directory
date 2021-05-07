@@ -133,7 +133,7 @@ class SearchResultContainer extends Component {
             />
           </div>
           <div className="col-md-8">
-            <ResultCards results={this.state.results} />
+            <ResultCards results={this.state.results}/>
           </div>
         </div>
       </div>

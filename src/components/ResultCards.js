@@ -14,7 +14,7 @@ function ResultCards(props) {
                         <h5 className="card-title bg-dark text-light p-3">{result.name.first} {result.name.last}</h5>
                         <div className="row">
                             <div className="col-md-4">
-                                <img className="card-img-top" src={result.picture.medium} alt={result.firstName}/>
+                                <img className="card-img-top" src={result.picture.large} alt={result.firstName}/>
                             </div>
                             <div className="col-md-5">
                                 <p className="card-text mt-1">{result.email}</p>
