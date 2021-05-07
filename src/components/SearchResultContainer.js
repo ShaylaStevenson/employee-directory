@@ -39,10 +39,8 @@ class SearchResultContainer extends Component {
   handleSearchSubmit = event => {
     event.preventDefault();
     this.searchEmployees(this.state.search);
-    this.setState({
-      // this should clear the input field, but doesn't seem to be working
-      search: ""
-    });
+    // return state to empty string
+    this.setState({ search: "" });
   };
 
   // function to filter through results array to find first names that match the query 
@@ -53,11 +51,11 @@ class SearchResultContainer extends Component {
     // use react filter to search for matching first names as they are changed to lowercase
     const foundEmployees = newResults.filter(employee => employee.name.first.toLowerCase() === query);
     // update results
-    this.setState({ results: foundEmployees})
+    this.setState({ results: foundEmployees })
   };
 
 /////////////// sort elements //////////////
-  // to sort employees by ascending or decending order
+  // to sort employees' first name in ascending or decending order
 
   // get the value and name of the input which triggered the change
   handleSortChange = event => {
@@ -70,14 +68,14 @@ class SearchResultContainer extends Component {
   handleSortSubmit = event => {
     event.preventDefault();
     this.sortEmployees(this.state.sort)
+    // return state to an empty string
+    this.setState({ sort: ""})
   };
 
   sortEmployees = query => {
     console.log("sorting employees in " + this.state.sort + " order")
-
     // save results to a new array before manipulating
     const newResults = [...this.state.results];
-
     // compare first names and sort into ascending order
     // ref https://stackoverflow.com/questions/6712034/sort-array-by-firstname-alphabetically-in-javascript
     newResults.sort(function(a, b){
@@ -85,7 +83,6 @@ class SearchResultContainer extends Component {
       if(a.name.first > b.name.first) { return 1; }
       return 0;
     });
-
     // logic to determine if order should be in decending order
     if (query === "decending") {
       newResults.reverse();
@@ -98,16 +95,13 @@ class SearchResultContainer extends Component {
     // to return results to original array
     handleResetSubmit = event => {
       event.preventDefault();
+      // to clear the input or select field. Thanks TA Robert!
+      event.target.parentNode.parentNode.reset();
       this.setState({
         results: this.state.orgResults,
         search: "",
         sort: ""
       })
-      // attempts to clear input field on reset, but not working
-      //this.state.search.value = "";
-      //this.sort.value= "";
-      
-
     }
 
   // render the components to app

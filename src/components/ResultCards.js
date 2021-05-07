@@ -7,9 +7,9 @@ function ResultCards(props) {
     return (
         <div className="container">
             {/* each result will display a card */}
-            {props.results.map(result => (
-            <div className="row my-1">
-                <div key={result.id} className="card w-100 text-dark">
+            {props.results.map((result, i) => (
+            <div key={i} className="row my-1">
+                <div className="card w-100 text-dark">
                     <div className="card-body">
                         <h5 className="card-title bg-dark text-light p-3">{result.name.first} {result.name.last}</h5>
                         <div className="row">
